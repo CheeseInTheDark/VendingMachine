@@ -2,8 +2,8 @@ package vendingmachine
 
 class VendingMachine
 {
-    def private displayText = "INSERT COIN"
-    def private moneyInMachine = 0.0
+    def private moneyInMachine = new AmountOfMoney()
+    def private statusReadout = new StatusReadout(moneyInMachine)
     def private returnedCoins = []
 
     def private coinValues =
@@ -12,15 +12,11 @@ class VendingMachine
              "QUARTER": 0.25]
 
     def display() {
-        def currentDisplay = displayText
-        if (displayText == "PRICE 0.50") {
-            displayText = "INSERT COIN"
-        }
-        return currentDisplay
+        statusReadout.nextMessage()
     }
 
     def selectChips() {
-        displayText = "PRICE 0.50"
+        statusReadout.displayPrice()
     }
 
     def insert(coin) {
@@ -29,13 +25,6 @@ class VendingMachine
         } else {
             reject(coin)
         }
-        displayText = moneyInMachine.toString()
-    }
-
-    def retrieveReturnedCoins() {
-        def coinsRetrieved = returnedCoins
-        returnedCoins = []
-        return coinsRetrieved
     }
 
     def private isAcceptable(coin) {
@@ -43,10 +32,16 @@ class VendingMachine
     }
 
     def private addToCoinsHeld(coin) {
-        moneyInMachine += coinValues[coin]
+        moneyInMachine.add(coinValues[coin])
     }
 
     def private reject(coin) {
         returnedCoins << coin
+    }
+
+    def retrieveReturnedCoins() {
+        def coinsRetrieved = returnedCoins
+        returnedCoins = []
+        return coinsRetrieved
     }
 }
