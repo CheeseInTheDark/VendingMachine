@@ -58,4 +58,12 @@ class VendingMachineTest
 
         assert underTest.retrieveReturnedCoins() == ["PENNY"]
     }
+
+    @Test
+    def void returnedCoinsCanOnlyBeRetrievedOnce() {
+        underTest.insert("PENNY")
+        underTest.retrieveReturnedCoins()
+
+        assert underTest.retrieveReturnedCoins() == []
+    }
 }

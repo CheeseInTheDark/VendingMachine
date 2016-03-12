@@ -23,5 +23,9 @@ class VendingMachine {
         displayText = amount.toString()
     }
 
-    def retrieveReturnedCoins() { coinsReturned }
+    def retrieveReturnedCoins() {
+        def coinsRetrieved = coinsReturned
+        coinsReturned = []
+        return coinsRetrieved
+    }
 }
