@@ -20,4 +20,14 @@ class VendingMachineTest
 
         assert underTest.display() == "0.05"
     }
+
+    @Test
+    def void displaysTenCentsWhenTwoNickelsAreInserted() {
+        def underTest = new VendingMachine()
+
+        underTest.insert("NICKEL")
+        underTest.insert("NICKEL")
+
+        assert underTest.display() == "0.10"
+    }
 }
