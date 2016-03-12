@@ -12,23 +12,15 @@ dependencies
 {
     compile 'org.codehaus.groovy:groovy-all:2.3.10'
 
-    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
     testCompile 'org.hamcrest:hamcrest-all:1.3'
     testCompile 'org.mockito:mockito-all:1.9.+'
     testCompile 'junit:junit:4.11'
 }
 
-jar
+test
 {
-    from(".")
+    testLogging
     {
-        include("classes/**")
-    }
-
-    manifest
-    {
-        attributes 'Main-Class': 'cheeseinthedark.vendingmachine.VendingMachine'
+        exceptionFormat = 'full'
     }
 }
-
-mainClassName = "cheeseinthedark.vendingmachine.VendingMachine"
