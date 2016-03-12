@@ -39,4 +39,16 @@ class VendingMachineTest
 
         assert underTest.display() == "0.10"
     }
+
+    @Test
+    def void displaysTwentyFiveCentsWhenAQuarterIsInserted() {
+        underTest.insert("QUARTER")
+
+        assert underTest.display() == "0.25"
+    }
+
+    @Test
+    def void coinReturnStartsWithNoCoins() {
+        assert underTest.retrieveReturnedCoins() == []
+    }
 }

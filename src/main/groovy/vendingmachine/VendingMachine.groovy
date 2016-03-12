@@ -6,7 +6,8 @@ class VendingMachine {
 
     def private coinValues =
             ["NICKEL": 0.05,
-             "DIME": 0.10]
+             "DIME": 0.10,
+             "QUARTER": 0.25]
 
     def display() {
         displayText
@@ -16,4 +17,6 @@ class VendingMachine {
         amount += coinValues[coin]
         displayText = amount.toString()
     }
+
+    def retrieveReturnedCoins() {[]}
 }
