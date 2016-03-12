@@ -51,4 +51,11 @@ class VendingMachineTest
     def void coinReturnStartsWithNoCoins() {
         assert underTest.retrieveReturnedCoins() == []
     }
+
+    @Test
+    def void penniesArePlacedInTheCoinReturn() {
+        underTest.insert("PENNY")
+
+        assert underTest.retrieveReturnedCoins() == ["PENNY"]
+    }
 }
