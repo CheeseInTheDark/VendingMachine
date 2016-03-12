@@ -1,21 +1,25 @@
 package vendingmachine
 
+import org.junit.Before
 import org.junit.Test
 import vendingmachine.VendingMachine
 
 class VendingMachineTest
 {
+    def underTest
+
+    @Before
+    def void setup() {
+        underTest = new VendingMachine()
+    }
+
     @Test
     def void displaysInsertCoinWhenNoCoinsAreInserted() {
-        def underTest = new VendingMachine()
-
         assert underTest.display() == "INSERT COIN"
     }
 
     @Test
     def void displaysFiveCentsWhenNickelIsInserted() {
-        def underTest = new VendingMachine()
-
         underTest.insert("NICKEL")
 
         assert underTest.display() == "0.05"
@@ -23,10 +27,15 @@ class VendingMachineTest
 
     @Test
     def void displaysTenCentsWhenTwoNickelsAreInserted() {
-        def underTest = new VendingMachine()
+        underTest.insert("NICKEL")
+        underTest.insert("NICKEL")
 
-        underTest.insert("NICKEL")
-        underTest.insert("NICKEL")
+        assert underTest.display() == "0.10"
+    }
+
+    @Test
+    def void displaysTenCentsWhenADimeIsInserted() {
+        underTest.insert("DIME")
 
         assert underTest.display() == "0.10"
     }
