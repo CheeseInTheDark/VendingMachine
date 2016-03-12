@@ -1,5 +1,13 @@
 package vendingmachine
 
 class VendingMachine {
-    def display = {"INSERT COIN"}
+    def private displayText = "INSERT COIN"
+
+    def display() {
+        displayText
+    }
+
+    def insert(value) {
+        displayText = "0.05"
+    }
 }
