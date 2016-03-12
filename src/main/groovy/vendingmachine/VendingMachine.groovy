@@ -1,6 +1,7 @@
 package vendingmachine
 
-class VendingMachine {
+class VendingMachine
+{
     def private displayText = "INSERT COIN"
     def private moneyInMachine = 0.0
     def private returnedCoins = []
@@ -14,11 +15,15 @@ class VendingMachine {
         displayText
     }
 
+    def selectChips() {
+        displayText = "PRICE 0.50"
+    }
+
     def insert(coin) {
         if (isAcceptable(coin)) {
             addToCoinsHeld(coin)
         } else {
-            rejectCoin(coin)
+            reject(coin)
         }
         displayText = moneyInMachine.toString()
     }
@@ -37,7 +42,7 @@ class VendingMachine {
         moneyInMachine += coinValues[coin]
     }
 
-    def private rejectCoin(coin) {
+    def private reject(coin) {
         returnedCoins << coin
     }
 }

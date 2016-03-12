@@ -4,7 +4,7 @@ import org.junit.Before
 import org.junit.Test
 import vendingmachine.VendingMachine
 
-class VendingMachineTest
+class CoinInsertionTest
 {
     def underTest
 
