@@ -12,7 +12,11 @@ class VendingMachine
              "QUARTER": 0.25]
 
     def display() {
-        displayText
+        def currentDisplay = displayText
+        if (displayText == "PRICE 0.50") {
+            displayText = "INSERT COIN"
+        }
+        return currentDisplay
     }
 
     def selectChips() {
