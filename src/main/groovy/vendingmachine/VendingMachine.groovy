@@ -28,6 +28,7 @@ class VendingMachine
         statusReadout.displayPrice(0.65)
         if (moneyInMachine.amount() >= 0.65) {
             dispensedItems = ["EXCELLENT SUGARBOMBS"]
+            statusReadout.displayGratification()
         }
     }
 

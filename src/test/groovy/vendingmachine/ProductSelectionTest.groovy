@@ -126,4 +126,15 @@ class ProductSelectionTest
 
         assert underTest.display() == "THANK YOU"
     }
+
+    @Test
+    def void thankYouIsDisplayedAfterDispensingCandy() {
+        underTest.insert("QUARTER")
+        underTest.insert("QUARTER")
+        underTest.insert("DIME")
+        underTest.insert("NICKEL")
+        underTest.selectCandy()
+
+        assert underTest.display() == "THANK YOU"
+    }
 }
