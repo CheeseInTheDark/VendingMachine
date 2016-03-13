@@ -94,4 +94,11 @@ class ProductSelectionTest
 
         assert underTest.retrieveDispensedItems() == ["SUPER GOOD STARCH SLICES"]
     }
+
+    @Test
+    def void selectingChipsWithoutEnoughMoneyInTheMachineDoesNotDispenseChips() {
+        underTest.selectChips()
+
+        assert underTest.retrieveDispensedItems() == []
+    }
 }
