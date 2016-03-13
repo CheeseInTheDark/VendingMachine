@@ -8,4 +8,6 @@ class AmountOfMoney {
     }
 
     def amount() { amount }
+
+    def setToZero() { amount = 0.0 }
 }

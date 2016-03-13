@@ -137,4 +137,23 @@ class ProductSelectionTest
 
         assert underTest.display() == "THANK YOU"
     }
+
+    @Test
+    def void dispensingAProductResetsTheMoneyInTheMachineToZero() {
+        underTest.insert("QUARTER")
+        underTest.insert("QUARTER")
+        underTest.selectChips()
+        underTest.display()
+
+        assert underTest.display() == "INSERT COIN"
+    }
+
+    @Test
+    def void moneyInTheMachineRemainsAtItsPriorAmountIfProductIsNotDispensed() {
+        underTest.insert("QUARTER")
+        underTest.selectCandy()
+        underTest.display()
+
+        assert underTest.display() == "0.25"
+    }
 }

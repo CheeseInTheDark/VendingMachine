@@ -17,6 +17,7 @@ class Dispenser
         if (moneyInMachine.amount() >= product.price) {
             dispensedItems << product.name
             statusReadout.displayGratification()
+            moneyInMachine.setToZero()
         }
     }
 }
