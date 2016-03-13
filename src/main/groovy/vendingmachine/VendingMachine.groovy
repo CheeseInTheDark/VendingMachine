@@ -22,7 +22,7 @@ class VendingMachine
 
     def selectCandy() {
         statusReadout.displayPrice(0.65)
-        if (moneyInMachine.amount() == 0.65) {
+        if (moneyInMachine.amount() >= 0.65) {
             dispensedItems = ["EXCELLENT SUGARBOMBS"]
         }
     }
