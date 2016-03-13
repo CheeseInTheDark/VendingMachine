@@ -76,11 +76,23 @@ class CoinInsertionTest
     }
 
     @Test
-    def void returningCoinsWhenTwoQuartersIsInsertedReturnsTwoQuarters() {
+    def void returningCoinsWhenTwoQuartersAreInsertedReturnsTwoQuarters() {
         underTest.insert("QUARTER")
         underTest.insert("QUARTER")
         underTest.returnCoins()
 
         assert underTest.retrieveReturnedCoins() == ["QUARTER", "QUARTER"]
+    }
+
+    @Test
+    def void returningCoinsWhenOneQuarterTwoDimesAndOneNickelAreInsertedReturnsThoseCoins() {
+        insertCoins(["QUARTER", "QUARTER", "DIME", "DIME", "NICKEL"])
+        underTest.returnCoins()
+
+        assert underTest.retrieveReturnedCoins() == ["QUARTER", "QUARTER", "DIME", "DIME", "NICKEL"]
+    }
+
+    def private insertCoins(coins) {
+        coins.each { underTest.insert(it) }
     }
 }

@@ -7,6 +7,7 @@ class VendingMachine
     def private dispensedItems = []
     def private dispenser = new Dispenser(statusReadout, moneyInMachine, dispensedItems)
     def private returnedCoins = []
+    def private insertedCoins = []
 
     def private coinValues =
             ["NICKEL": 0.05,
@@ -40,6 +41,7 @@ class VendingMachine
     }
 
     def insert(coin) {
+        insertedCoins << coin
         if (isAcceptable(coin)) {
             addToCoinsHeld(coin)
         } else {
@@ -60,11 +62,7 @@ class VendingMachine
     }
 
     def returnCoins() {
-        if (moneyInMachine.amount() == 0.50) {
-            returnedCoins = ["QUARTER", "QUARTER"]
-        } else {
-            returnedCoins = ["QUARTER"]
-        }
+        returnedCoins = insertedCoins
     }
 
     def retrieveReturnedCoins() {
