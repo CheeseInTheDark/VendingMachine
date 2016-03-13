@@ -27,6 +27,10 @@ class VendingMachine
         statusReadout.displayPrice(1.00)
     }
 
+    def retrieveDispensedItems() {
+        []
+    }
+
     def insert(coin) {
         if (isAcceptable(coin)) {
             addToCoinsHeld(coin)

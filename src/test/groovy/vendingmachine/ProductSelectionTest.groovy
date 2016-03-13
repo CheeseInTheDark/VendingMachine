@@ -34,4 +34,11 @@ class ProductSelectionTest
 
         assert underTest.display() == "PRICE 1.00"
     }
+
+    @Test
+    def void selectingColaWithoutSufficientMoneyInTheMachineDoesNotDispenseCola() {
+        underTest.selectCola()
+
+        assert underTest.retrieveDispensedItems() == []
+    }
 }
