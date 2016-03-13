@@ -41,4 +41,12 @@ class ProductSelectionTest
 
         assert underTest.retrieveDispensedItems() == []
     }
+
+    @Test
+    def void selectingColaWithSufficientMoneyInTheMachineDispensesCola() {
+        4.times { underTest.insert("QUARTER") }
+        underTest.selectCola()
+
+        assert underTest.retrieveDispensedItems() == ["SUPER FIZZ BOP COLA SODAPOP"]
+    }
 }

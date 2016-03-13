@@ -5,6 +5,7 @@ class VendingMachine
     def private moneyInMachine = new AmountOfMoney()
     def private statusReadout = new StatusReadout(moneyInMachine)
     def private returnedCoins = []
+    def private dispensedItems = []
 
     def private coinValues =
             ["NICKEL": 0.05,
@@ -25,10 +26,13 @@ class VendingMachine
 
     def selectCola() {
         statusReadout.displayPrice(1.00)
+        if (moneyInMachine.amount() == 1.00) {
+            dispensedItems = ["SUPER FIZZ BOP COLA SODAPOP"]
+        }
     }
 
     def retrieveDispensedItems() {
-        []
+        dispensedItems
     }
 
     def insert(coin) {
