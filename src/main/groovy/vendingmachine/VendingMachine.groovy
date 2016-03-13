@@ -29,7 +29,7 @@ class VendingMachine
 
     def selectCola() {
         statusReadout.displayPrice(1.00)
-        if (moneyInMachine.amount() == 1.00) {
+        if (moneyInMachine.amount() >= 1.00) {
             dispensedItems = ["SUPER FIZZ BOP COLA SODAPOP"]
         }
     }
