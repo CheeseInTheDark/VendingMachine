@@ -35,6 +35,7 @@ class VendingMachine
         statusReadout.displayPrice(1.00)
         if (moneyInMachine.amount() >= 1.00) {
             dispensedItems = ["SUPER FIZZ BOP COLA SODAPOP"]
+            statusReadout.displayGratification()
         }
     }
 
