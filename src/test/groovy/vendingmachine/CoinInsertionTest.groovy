@@ -66,4 +66,12 @@ class CoinInsertionTest
 
         assert underTest.retrieveReturnedCoins() == []
     }
+
+    @Test
+    def void returningCoinsWhenAQuarterIsInsertedReturnsTheQuarter() {
+        underTest.insert("QUARTER")
+        underTest.returnCoins()
+
+        assert underTest.retrieveReturnedCoins() == ["QUARTER"]
+    }
 }

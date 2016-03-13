@@ -59,6 +59,10 @@ class VendingMachine
         returnedCoins << coin
     }
 
+    def returnCoins() {
+        returnedCoins = ["QUARTER"]
+    }
+
     def retrieveReturnedCoins() {
         def coinsRetrieved = returnedCoins
         returnedCoins = []
