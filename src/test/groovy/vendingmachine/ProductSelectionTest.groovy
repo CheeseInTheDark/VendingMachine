@@ -85,4 +85,13 @@ class ProductSelectionTest
 
         assert underTest.retrieveDispensedItems() == ["SUPER FIZZ BOP COLA SODAPOP"]
     }
+
+    @Test
+    def void selectingChipsWithEnoughMoneyInTheMachineDispensesChips() {
+        underTest.insert("QUARTER")
+        underTest.insert("QUARTER")
+        underTest.selectChips()
+
+        assert underTest.retrieveDispensedItems() == ["SUPER GOOD STARCH SLICES"]
+    }
 }
