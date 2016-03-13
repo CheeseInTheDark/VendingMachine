@@ -14,6 +14,7 @@ class VendingMachine
              "QUARTER": 0.25]
 
     def private chips = new Product(name: "SUPER GOOD STARCH SLICES", price: 0.50)
+    def private candy = new Product(name: "EXCELLENT SUGARBOMBS", price: 0.65)
 
     def display() {
         statusReadout.nextMessage()
@@ -24,11 +25,7 @@ class VendingMachine
     }
 
     def selectCandy() {
-        statusReadout.displayPrice(0.65)
-        if (moneyInMachine.amount() >= 0.65) {
-            dispensedItems = ["EXCELLENT SUGARBOMBS"]
-            statusReadout.displayGratification()
-        }
+        dispenser.request(candy)
     }
 
     def selectCola() {
