@@ -13,11 +13,24 @@ class Dispenser
     }
 
     def request(product) {
-        statusReadout.displayPrice(product.price)
-        if (moneyInMachine.amount() >= product.price) {
-            dispensedItems << product.name
-            statusReadout.displayGratification()
-            moneyInMachine.setToZero()
+        if (canDispense(product)) {
+            dispense(product)
+        } else {
+            rejectRequestFor(product)
         }
+    }
+
+    def private canDispense(product) {
+        product.price <= moneyInMachine.amount()
+    }
+
+    def private dispense(product) {
+        dispensedItems << product.name
+        statusReadout.displayGratification()
+        moneyInMachine.setToZero()
+    }
+
+    def private rejectRequestFor(product) {
+        statusReadout.displayPrice(product.price)
     }
 }
