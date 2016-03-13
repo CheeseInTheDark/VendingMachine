@@ -4,16 +4,16 @@ class VendingMachine
 {
     def private moneyInMachine = new AmountOfMoney()
     def private statusReadout = new StatusReadout(moneyInMachine)
-    def private dispenser = new Dispenser()
-    def private returnedCoins = []
     def private dispensedItems = []
+    def private dispenser = new Dispenser(statusReadout, moneyInMachine, dispensedItems)
+    def private returnedCoins = []
 
     def private coinValues =
             ["NICKEL": 0.05,
              "DIME": 0.10,
              "QUARTER": 0.25]
 
-    def private chips = new Product(name: "SUPER GOOD STARCH SLICES")
+    def private chips = new Product(name: "SUPER GOOD STARCH SLICES", price: 0.50)
 
     def display() {
         statusReadout.nextMessage()
@@ -21,11 +21,6 @@ class VendingMachine
 
     def selectChips() {
         dispenser.request(chips)
-        statusReadout.displayPrice(0.50)
-        if (moneyInMachine.amount() >= 0.50) {
-            dispensedItems = ["SUPER GOOD STARCH SLICES"]
-            statusReadout.displayGratification()
-        }
     }
 
     def selectCandy() {
