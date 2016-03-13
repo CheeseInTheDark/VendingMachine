@@ -14,7 +14,7 @@ class ProductSelectionTest
     }
 
     @Test
-    def void insertCoinsIsDisplayedAfterPriceIsDisplayed() {
+    def void insertCoinsIsDisplayedAfterPriceOfChipsIsDisplayed() {
         underTest.selectChips()
         underTest.display()
 
