@@ -23,6 +23,10 @@ class StatusReadout
         buildMessage = { "PRICE " + price.toString() }
     }
 
+    def displayGratification() {
+        buildMessage = { "THANK YOU" }
+    }
+
     def nextMessage() {
         def message = buildMessage()
         displayWaitingForMoney()

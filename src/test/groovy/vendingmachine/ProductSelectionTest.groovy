@@ -109,4 +109,13 @@ class ProductSelectionTest
 
         assert underTest.retrieveDispensedItems() == ["SUPER GOOD STARCH SLICES"]
     }
+
+    @Test
+    def void thankYouIsDisplayedAfterDispensingChips() {
+        underTest.insert("QUARTER")
+        underTest.insert("QUARTER")
+        underTest.selectChips()
+
+        assert underTest.display() == "THANK YOU"
+    }
 }
