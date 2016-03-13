@@ -19,7 +19,7 @@ class StatusReadout
         buildMessage = buildMoneyInMachineMessage
     }
 
-    def displayPrice(price = 0.50) {
+    def displayPrice(price) {
         buildMessage = { "PRICE " + price.toString() }
     }
 

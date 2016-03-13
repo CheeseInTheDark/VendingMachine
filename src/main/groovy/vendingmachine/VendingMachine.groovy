@@ -16,7 +16,7 @@ class VendingMachine
     }
 
     def selectChips() {
-        statusReadout.displayPrice()
+        statusReadout.displayPrice(0.50)
     }
 
     def selectCandy() {
