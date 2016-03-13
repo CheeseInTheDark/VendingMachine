@@ -18,7 +18,7 @@ class VendingMachine
 
     def selectChips() {
         statusReadout.displayPrice(0.50)
-        if (moneyInMachine.amount() == 0.50) {
+        if (moneyInMachine.amount() >= 0.50) {
             dispensedItems = ["SUPER GOOD STARCH SLICES"]
         }
     }
