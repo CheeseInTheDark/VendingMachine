@@ -19,6 +19,10 @@ class VendingMachine
         statusReadout.displayPrice()
     }
 
+    def selectCandy() {
+        statusReadout.displayPrice(0.65)
+    }
+
     def insert(coin) {
         if (isAcceptable(coin)) {
             addToCoinsHeld(coin)

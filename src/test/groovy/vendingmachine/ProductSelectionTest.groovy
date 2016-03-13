@@ -20,4 +20,11 @@ class ProductSelectionTest
 
         assert underTest.display() == "INSERT COIN"
     }
+
+    @Test
+    def void selectingCandyDisplaysPriceWhenNoMoneyIsInsertedInTheMachine() {
+        underTest.selectCandy()
+
+        assert underTest.display() == "PRICE 0.65"
+    }
 }

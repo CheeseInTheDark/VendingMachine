@@ -2,10 +2,6 @@ package vendingmachine
 
 class StatusReadout
 {
-    def private buildPriceMessage = {
-        "PRICE 0.50"
-    }
-
     def private buildMoneyInMachineMessage = {
         if (moneyInMachine.amount() > 0.0) { moneyInMachine.amount().toString() }
         else { insertCoinPrompt }
@@ -23,8 +19,8 @@ class StatusReadout
         buildMessage = buildMoneyInMachineMessage
     }
 
-    def displayPrice() {
-        buildMessage = buildPriceMessage
+    def displayPrice(price = 0.50) {
+        buildMessage = { "PRICE " + price.toString() }
     }
 
     def nextMessage() {
