@@ -23,6 +23,10 @@ class VendingMachine
         statusReadout.displayPrice(0.65)
     }
 
+    def selectCola() {
+        statusReadout.displayPrice(1.00)
+    }
+
     def insert(coin) {
         if (isAcceptable(coin)) {
             addToCoinsHeld(coin)

@@ -27,4 +27,11 @@ class ProductSelectionTest
 
         assert underTest.display() == "PRICE 0.65"
     }
+
+    @Test
+    def void selectingColaDisplaysPriceWhenNoMoneyIsInsertedInTheMachine() {
+        underTest.selectCola()
+
+        assert underTest.display() == "PRICE 1.00"
+    }
 }
