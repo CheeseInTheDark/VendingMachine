@@ -60,7 +60,11 @@ class VendingMachine
     }
 
     def returnCoins() {
-        returnedCoins = ["QUARTER"]
+        if (moneyInMachine.amount() == 0.50) {
+            returnedCoins = ["QUARTER", "QUARTER"]
+        } else {
+            returnedCoins = ["QUARTER"]
+        }
     }
 
     def retrieveReturnedCoins() {
