@@ -156,4 +156,14 @@ class ProductSelectionTest
 
         assert underTest.display() == "0.25"
     }
+
+    @Test
+    def void dispensedProductsCanOnlyBeRetrievedOnce() {
+        underTest.insert("QUARTER")
+        underTest.insert("QUARTER")
+        underTest.selectChips()
+        underTest.retrieveDispensedItems()
+
+        assert underTest.retrieveDispensedItems() == []
+    }
 }

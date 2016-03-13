@@ -34,7 +34,9 @@ class VendingMachine
     }
 
     def retrieveDispensedItems() {
-        dispensedItems
+        def retrievedItems = dispensedItems.collect()
+        dispensedItems.clear()
+        retrievedItems
     }
 
     def insert(coin) {
