@@ -3,16 +3,16 @@ package vendingmachine
 class StatusReadout
 {
     def private buildMoneyInMachineMessage = {
-        if (moneyInMachine.amount() > 0.0) { moneyInMachine.amount().toString() }
+        if (coinBox.valueOfCoins() > 0.0) { coinBox.valueOfCoins().toString() }
         else { insertCoinPrompt }
     }
 
     def private insertCoinPrompt = "INSERT COIN"
     def private buildMessage = buildMoneyInMachineMessage
-    def private moneyInMachine
+    def private coinBox
 
-    StatusReadout(moneyInMachine) {
-        this.moneyInMachine = moneyInMachine
+    StatusReadout(coinBox) {
+        this.coinBox = coinBox
     }
 
     def displayWaitingForMoney() {

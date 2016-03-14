@@ -3,14 +3,8 @@ package vendingmachine
 class Dispenser
 {
     def private statusReadout
-    def private moneyInMachine
+    def private coinBox
     def private dispensedItems
-
-    Dispenser(statusReadout, moneyInMachine, dispensedItems) {
-        this.statusReadout = statusReadout
-        this.moneyInMachine = moneyInMachine
-        this.dispensedItems = dispensedItems
-    }
 
     def request(product) {
         if (canDispense(product)) {
@@ -21,13 +15,13 @@ class Dispenser
     }
 
     def private canDispense(product) {
-        product.price <= moneyInMachine.amount()
+        product.price <= coinBox.valueOfCoins()
     }
 
     def private dispense(product) {
         dispensedItems << product.name
         statusReadout.displayGratification()
-        moneyInMachine.setToZero()
+        coinBox.claimCoins()
     }
 
     def private rejectRequestFor(product) {
