@@ -4,7 +4,7 @@ class Dispenser
 {
     def private statusReadout
     def private coinBox
-    def private dispensedItems
+    def private itemBin
 
     def request(product) {
         if (canDispense(product)) {
@@ -19,7 +19,7 @@ class Dispenser
     }
 
     def private dispense(product) {
-        dispensedItems << product.name
+        itemBin.add(product.name)
         statusReadout.displayGratification()
         coinBox.claimCoins()
     }

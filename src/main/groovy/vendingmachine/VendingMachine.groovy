@@ -2,11 +2,11 @@ package vendingmachine
 
 class VendingMachine
 {
-    def private coinReturn = new CoinReturn()
+    def private coinReturn = new CollectionTray()
+    def private itemBin = new CollectionTray()
     def private coinBox = new CoinBox(coinReturn: coinReturn)
     def private statusReadout = new StatusReadout(coinBox)
-    def private dispensedItems = []
-    def private dispenser = new Dispenser(statusReadout: statusReadout, coinBox: coinBox, dispensedItems: dispensedItems)
+    def private dispenser = new Dispenser(statusReadout: statusReadout, coinBox: coinBox, itemBin: itemBin)
 
     def private chips = new Product(name: "SUPER GOOD STARCH SLICES", price: 0.50)
     def private candy = new Product(name: "EXCELLENT SUGARBOMBS", price: 0.65)
@@ -29,9 +29,7 @@ class VendingMachine
     }
 
     def retrieveDispensedItems() {
-        def retrievedItems = dispensedItems.collect()
-        dispensedItems.clear()
-        retrievedItems
+        itemBin.collectItemsInTray()
     }
 
     def insert(coin) {
@@ -43,6 +41,6 @@ class VendingMachine
     }
 
     def retrieveReturnedCoins() {
-        coinReturn.collectCoins()
+        coinReturn.collectItemsInTray()
     }
 }
