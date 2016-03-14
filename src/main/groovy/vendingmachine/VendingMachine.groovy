@@ -63,6 +63,7 @@ class VendingMachine
 
     def returnCoins() {
         returnedCoins = insertedCoins
+        moneyInMachine.setToZero()
     }
 
     def retrieveReturnedCoins() {

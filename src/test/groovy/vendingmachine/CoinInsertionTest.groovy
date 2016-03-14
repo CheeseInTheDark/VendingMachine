@@ -92,6 +92,14 @@ class CoinInsertionTest
         assert underTest.retrieveReturnedCoins() == ["QUARTER", "QUARTER", "DIME", "DIME", "NICKEL"]
     }
 
+    @Test
+    def void returningCoinsResetsTheAmountOfMoneyInTheMachine() {
+        underTest.insert("QUARTER")
+        underTest.returnCoins()
+
+        assert underTest.display() == "INSERT COIN"
+    }
+
     def private insertCoins(coins) {
         coins.each { underTest.insert(it) }
     }
