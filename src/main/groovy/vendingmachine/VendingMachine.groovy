@@ -43,4 +43,8 @@ class VendingMachine
     def retrieveReturnedCoins() {
         coinReturn.collectItemsInTray()
     }
+
+    def restockCandy(amount) {}
+    def restockChips(amount) {}
+    def restockCola(amount) {}
 }

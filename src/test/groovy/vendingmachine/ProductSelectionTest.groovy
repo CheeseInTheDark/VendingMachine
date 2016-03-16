@@ -1,10 +1,18 @@
 package vendingmachine
 
+import org.junit.Before
 import org.junit.Test
 
 class ProductSelectionTest
 {
     def underTest = new VendingMachine()
+
+    @Before
+    def void setup() {
+        underTest.restockChips(1)
+        underTest.restockCola(1)
+        underTest.restockCandy(1)
+    }
 
     @Test
     def void selectingChipsDisplaysPriceWhenNoMoneyIsInsertedInTheMachine() {
