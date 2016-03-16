@@ -12,6 +12,8 @@ class VendingMachine
     def private candy = new Product(name: "EXCELLENT SUGARBOMBS", price: 0.65)
     def private cola = new Product(name: "SUPER FIZZ BOP COLA SODAPOP", price: 1.00)
 
+    def private hasCandy = false
+
     def display() {
         statusReadout.nextMessage()
     }
@@ -21,7 +23,11 @@ class VendingMachine
     }
 
     def selectCandy() {
-        dispenser.request(candy)
+        if (!hasCandy) {
+            statusReadout.displaySoldOut()
+        } else {
+            dispenser.request(candy)
+        }
     }
 
     def selectCola() {
@@ -44,7 +50,13 @@ class VendingMachine
         coinReturn.collectItemsInTray()
     }
 
-    def restockCandy(amount) {}
-    def restockChips(amount) {}
+    def restockCandy(amount) {
+        hasCandy = true
+    }
+
+    def restockChips(amount) {
+
+    }
+
     def restockCola(amount) {}
 }

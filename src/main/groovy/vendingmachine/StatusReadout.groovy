@@ -27,6 +27,10 @@ class StatusReadout
         buildMessage = { "THANK YOU" }
     }
 
+    def displaySoldOut() {
+        buildMessage = { "SOLD OUT" }
+    }
+
     def nextMessage() {
         def message = buildMessage()
         displayWaitingForMoney()
