@@ -19,7 +19,11 @@ class VendingMachine
     }
 
     def selectChips() {
-        dispenser.request(chips)
+        if (!hasCandy) {
+            statusReadout.displaySoldOut()
+        } else {
+            dispenser.request(chips)
+        }
     }
 
     def selectCandy() {

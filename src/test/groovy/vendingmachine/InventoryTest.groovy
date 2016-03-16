@@ -12,4 +12,11 @@ class InventoryTest
 
         assert underTest.display() == "SOLD OUT"
     }
+
+    @Test
+    def void selectingChipsWhenChipsAreOutOfStockDisplaysSoldOut() {
+        underTest.selectChips()
+
+        assert underTest.display() == "SOLD OUT"
+    }
 }
