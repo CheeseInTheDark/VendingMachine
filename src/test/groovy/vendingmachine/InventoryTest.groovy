@@ -36,7 +36,7 @@ class InventoryTest
     }
 
     @Test
-    def void dispensingColaRemovesChipsFromInventory() {
+    def void dispensingColaRemovesColaFromInventory() {
         underTest.restockCola(1)
         2.times { purchaseCola() }
 
