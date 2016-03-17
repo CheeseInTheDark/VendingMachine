@@ -35,7 +35,11 @@ class VendingMachine
     }
 
     def selectCola() {
-        dispenser.request(cola)
+        if (!hasCandy) {
+            statusReadout.displaySoldOut()
+        } else {
+            dispenser.request(cola)
+        }
     }
 
     def retrieveDispensedItems() {
