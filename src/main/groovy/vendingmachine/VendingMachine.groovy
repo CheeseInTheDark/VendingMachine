@@ -44,6 +44,10 @@ class VendingMachine
         coinBox.returnCoins()
     }
 
+    def addToCoinReserves(coin) {
+        statusReadout.useInsertCoin()
+    }
+
     def retrieveReturnedCoins() {
         coinReturn.collectItemsInTray()
     }

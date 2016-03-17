@@ -11,6 +11,7 @@ class CoinInsertionTest
     @Before
     def void setup() {
         underTest = new VendingMachine()
+        4.times { underTest.addToCoinReserves("NICKEL") }
     }
 
     @Test

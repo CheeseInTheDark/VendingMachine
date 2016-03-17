@@ -12,6 +12,7 @@ class ProductSelectionTest
         underTest.restockChips(1)
         underTest.restockCola(1)
         underTest.restockCandy(1)
+        4.times { underTest.addToCoinReserves("NICKEL") }
     }
 
     @Test

@@ -7,12 +7,16 @@ class StatusReadout
         else { insertCoinPrompt }
     }
 
-    def private insertCoinPrompt = "INSERT COIN"
+    def private insertCoinPrompt = "EXACT CHANGE ONLY"
     def private buildMessage = buildMoneyInMachineMessage
     def private coinBox
 
     StatusReadout(coinBox) {
         this.coinBox = coinBox
+    }
+
+    def useInsertCoin() {
+        insertCoinPrompt = "INSERT COIN"
     }
 
     def displayWaitingForMoney() {
