@@ -64,6 +64,14 @@ class InventoryTest
         assert underTest.display() == "SOLD OUT"
     }
 
+    @Test
+    def void theActualCountOfChipsInInventoryIsTracked() {
+        underTest.restockChips(2)
+        2.times { purchaseChips() }
+
+        assert underTest.display() == "THANK YOU"
+    }
+
     def private purchaseChips() {
         2.times { underTest.insert("QUARTER") }
         underTest.selectChips()
@@ -77,16 +85,17 @@ class InventoryTest
         assert underTest.display() == "SOLD OUT"
     }
 
+    @Test
+    def void theActualCountOfCandyInStockIsTracked() {
+        underTest.restockCandy(2)
+        2.times { purchaseCandy() }
+
+        assert underTest.display() == "THANK YOU"
+    }
+
     def private purchaseCandy() {
         3.times { underTest.insert("QUARTER") }
         underTest.selectCandy()
     }
 
-    @Test
-    def void theActualCountOfChipsInInventoryIsTracked() {
-        underTest.restockChips(2)
-        2.times { purchaseChips() }
-
-        assert underTest.display() == "THANK YOU"
-    }
 }

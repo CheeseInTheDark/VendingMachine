@@ -12,7 +12,7 @@ class VendingMachine
     def private candy = new Product(name: "EXCELLENT SUGARBOMBS", price: 0.65)
     def private cola = new Product(name: "SUPER FIZZ BOP COLA SODAPOP", price: 1.00)
 
-    def private hasCandy = false
+    def private candyInInventory = 0
     def private hasCola = false
     def private chipsInInventory = 0
 
@@ -30,10 +30,10 @@ class VendingMachine
     }
 
     def selectCandy() {
-        if (!hasCandy) {
+        if (candyInInventory == 0) {
             statusReadout.displaySoldOut()
         } else {
-            hasCandy = false
+            candyInInventory--
             dispenser.request(candy)
         }
     }
@@ -64,7 +64,7 @@ class VendingMachine
     }
 
     def restockCandy(amount) {
-        hasCandy = true
+        candyInInventory += amount
     }
 
     def restockChips(amount) {
