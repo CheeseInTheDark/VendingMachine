@@ -14,13 +14,14 @@ class VendingMachine
 
     def private hasCandy = false
     def private hasCola = false
+    def private hasChips = false
 
     def display() {
         statusReadout.nextMessage()
     }
 
     def selectChips() {
-        if (!hasCandy) {
+        if (!hasChips) {
             statusReadout.displaySoldOut()
         } else {
             dispenser.request(chips)
@@ -65,7 +66,7 @@ class VendingMachine
     }
 
     def restockChips(amount) {
-
+        hasChips = true
     }
 
     def restockCola(amount) {
