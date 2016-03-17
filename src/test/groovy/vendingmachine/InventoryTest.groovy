@@ -26,4 +26,12 @@ class InventoryTest
 
         assert underTest.display() == "SOLD OUT"
     }
+
+    @Test
+    def void restockingColaAllowsPurchaseOfColaAgain() {
+        underTest.restockCola(1)
+        underTest.selectCola()
+
+        assert underTest.display() == "PRICE 1.00"
+    }
 }
