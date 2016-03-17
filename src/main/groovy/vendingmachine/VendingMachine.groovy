@@ -33,6 +33,7 @@ class VendingMachine
         if (!hasCandy) {
             statusReadout.displaySoldOut()
         } else {
+            hasCandy = false
             dispenser.request(candy)
         }
     }
