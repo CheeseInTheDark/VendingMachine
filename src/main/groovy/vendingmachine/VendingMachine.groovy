@@ -16,6 +16,8 @@ class VendingMachine
             itemBin: itemBin,
             inventory: inventory)
 
+    def private coinsAdded = 0
+
     def display() {
         statusReadout.nextMessage()
     }
@@ -45,7 +47,10 @@ class VendingMachine
     }
 
     def addToCoinReserves(coin) {
-        statusReadout.useInsertCoin()
+        coinsAdded++
+        if(coinsAdded == 2) {
+            statusReadout.useInsertCoin()
+        }
     }
 
     def retrieveReturnedCoins() {
