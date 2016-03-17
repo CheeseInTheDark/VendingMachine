@@ -1,50 +1,35 @@
 package vendingmachine
 
+import static vendingmachine.Selections.candy
+import static vendingmachine.Selections.chips
+import static vendingmachine.Selections.cola
+
 class VendingMachine
 {
     def private coinReturn = new CollectionTray()
     def private itemBin = new CollectionTray()
     def private coinBox = new CoinBox(coinReturn: coinReturn)
     def private statusReadout = new StatusReadout(coinBox)
-    def private dispenser = new Dispenser(statusReadout: statusReadout, coinBox: coinBox, itemBin: itemBin)
-
-    def private chips = new Product(name: "SUPER GOOD STARCH SLICES", price: 0.50)
-    def private candy = new Product(name: "EXCELLENT SUGARBOMBS", price: 0.65)
-    def private cola = new Product(name: "SUPER FIZZ BOP COLA SODAPOP", price: 1.00)
-
-    def private candyInInventory = 0
-    def private colaInInventory = 0
-    def private chipsInInventory = 0
+    def private inventory = new Inventory()
+    def private dispenser = new Dispenser(statusReadout: statusReadout,
+            coinBox: coinBox,
+            itemBin: itemBin,
+            inventory: inventory)
 
     def display() {
         statusReadout.nextMessage()
     }
 
     def selectChips() {
-        if (chipsInInventory == 0) {
-            statusReadout.displaySoldOut()
-        } else {
-            chipsInInventory--
-            dispenser.request(chips)
-        }
+        dispenser.request(chips)
     }
 
     def selectCandy() {
-        if (candyInInventory == 0) {
-            statusReadout.displaySoldOut()
-        } else {
-            candyInInventory--
-            dispenser.request(candy)
-        }
+        dispenser.request(candy)
     }
 
     def selectCola() {
-        if (colaInInventory == 0) {
-            statusReadout.displaySoldOut()
-        } else {
-            colaInInventory--
-            dispenser.request(cola)
-        }
+        dispenser.request(cola)
     }
 
     def retrieveDispensedItems() {
@@ -64,14 +49,14 @@ class VendingMachine
     }
 
     def restockCandy(amount) {
-        candyInInventory += amount
+        inventory.add(candy.name, amount)
     }
 
     def restockChips(amount) {
-        chipsInInventory += amount
+        inventory.add(chips.name, amount)
     }
 
     def restockCola(amount) {
-        colaInInventory += amount
+        inventory.add(cola.name, amount)
     }
 }
