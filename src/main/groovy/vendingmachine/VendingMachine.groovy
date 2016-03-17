@@ -39,6 +39,7 @@ class VendingMachine
         if (!hasCola) {
             statusReadout.displaySoldOut()
         } else {
+            hasCola = false
             dispenser.request(cola)
         }
     }
