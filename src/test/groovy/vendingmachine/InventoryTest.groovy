@@ -43,6 +43,14 @@ class InventoryTest
         assert underTest.display() == "SOLD OUT"
     }
 
+    @Test
+    def void actualCountOfColaInInventoryIsTracked() {
+        underTest.restockCola(2)
+        2.times { purchaseCola() }
+
+        assert underTest.display() == "THANK YOU"
+    }
+
     def private purchaseCola() {
         4.times { underTest.insert("QUARTER") }
         underTest.selectCola()
