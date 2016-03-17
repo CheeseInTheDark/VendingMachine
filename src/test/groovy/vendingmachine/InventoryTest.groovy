@@ -81,4 +81,12 @@ class InventoryTest
         3.times { underTest.insert("QUARTER") }
         underTest.selectCandy()
     }
+
+    @Test
+    def void theActualCountOfChipsInInventoryIsTracked() {
+        underTest.restockChips(2)
+        2.times { purchaseChips() }
+
+        assert underTest.display() == "THANK YOU"
+    }
 }
