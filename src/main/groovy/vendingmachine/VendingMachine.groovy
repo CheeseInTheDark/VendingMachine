@@ -24,6 +24,7 @@ class VendingMachine
         if (!hasChips) {
             statusReadout.displaySoldOut()
         } else {
+            hasChips = false
             dispenser.request(chips)
         }
     }

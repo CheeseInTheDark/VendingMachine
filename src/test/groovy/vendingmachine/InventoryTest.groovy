@@ -51,8 +51,21 @@ class InventoryTest
         assert underTest.display() == "PRICE 0.50"
     }
 
+    @Test
+    def void dispensingChipsRemovesChipsFromInventory() {
+        underTest.restockChips(1)
+        2.times { purchaseChips() }
+
+        assert underTest.display() == "SOLD OUT"
+    }
+
     def private purchaseCola() {
         4.times { underTest.insert("QUARTER") }
         underTest.selectCola()
+    }
+
+    def private purchaseChips() {
+        2.times { underTest.insert("QUARTER") }
+        underTest.selectChips()
     }
 }
