@@ -48,6 +48,7 @@ class CoinBox
             def valueToReturn = valueOfCoins() - value
 
             while (valueToReturn >= 0.25 && (coinsInBox.contains("QUARTER") || quarterInReserve)) {
+                quarterInReserve = false
                 coinReturn.add("QUARTER")
                 coinsInBox.remove("QUARTER")
                 valueToReturn -= 0.25
