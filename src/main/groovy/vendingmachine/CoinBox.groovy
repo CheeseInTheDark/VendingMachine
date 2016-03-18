@@ -51,17 +51,18 @@ class CoinBox
                 if (!coinsInBox.contains("QUARTER")) {
                     quartersInReserve--
                 }
-                coinReturn.add("QUARTER")
                 coinsInBox.remove("QUARTER")
+                coinReturn.add("QUARTER")
                 valueToReturn -= 0.25
             }
 
             while (valueToReturn >= 0.10 && (coinsInBox.contains("DIME") || dimesInReserve > 0)) {
+                coinReturn.add("DIME")
                 if (!coinsInBox.contains("DIME")) {
                     dimesInReserve--
                 }
                 coinsInBox.remove("DIME")
-                coinReturn.add("DIME")
+
                 valueToReturn -= 0.10
             }
 
@@ -70,6 +71,7 @@ class CoinBox
                 if (!coinsInBox.contains("NICKEL")) {
                     nickelsInReserve--
                 }
+                coinsInBox.remove("NICKEL")
                 valueToReturn -= 0.05
             }
         }
@@ -82,6 +84,11 @@ class CoinBox
         while (coinsInBox.contains("DIME")) {
             coinsInBox.remove("DIME")
             dimesInReserve++
+        }
+
+        while (coinsInBox.contains("NICKEL")) {
+            coinsInBox.remove("NICKEL")
+            nickelsInReserve++
         }
 
         coinsInBox = []

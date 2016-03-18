@@ -259,6 +259,22 @@ class ChangeMakingTest
         assert coinReturn.collectItemsInTray() == ["DIME", "DIME"]
     }
 
+    @Test
+    def void noNickelsAreReturnedWhenExactChangeIsProvided() {
+        add(["NICKEL", "NICKEL"])
+        underTest.claimCoins(0.10)
+
+        assert coinReturn.collectItemsInTray() == []
+    }
+
+    @Test
+    def void noDimesAreReturnedWhenExactChangeIsProvided() {
+        add(["DIME", "DIME"])
+        underTest.claimCoins(0.20)
+
+        assert coinReturn.collectItemsInTray() == []
+    }
+
     def private add(coins) {
         coins.each { underTest.add(it) }
     }
