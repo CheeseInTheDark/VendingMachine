@@ -35,21 +35,25 @@ class CoinBox
         coinsInBox.sum { coinValues[it] }
     }
 
-    def claimCoins(valueToClaim) {
-        def valueOfCoinsHeldBeforeClaiming = valueOfHeldCoins()
-        coinsInReserve.addAll(coinsInBox)
-        coinsInBox = []
+    def canMakeChangeForAllProducts() {
+        coinsInReserve.count("NICKEL") >= 2 ||
+                coinsInReserve.count("NICKEL") >= 1 &&
+                coinsInReserve.count("DIME") >= 1
+    }
 
-        if (valueToClaim != null) {
-            def changeDue = valueOfCoinsHeldBeforeClaiming - valueToClaim
+    def claimCoins(amountToClaim) {
+        def valueOfCoinsHeldBeforeClaiming = valueOfHeldCoins()
+        moveHeldCoinsToReserves()
+
+        if (amountToClaim != null) {
+            def changeDue = valueOfCoinsHeldBeforeClaiming - amountToClaim
             returnChange(changeDue)
         }
     }
 
-    def canMakeChangeForAllProducts() {
-        coinsInReserve.count("NICKEL") >= 2 ||
-        coinsInReserve.count("NICKEL") >= 1 &&
-        coinsInReserve.count("DIME") >= 1
+    def private moveHeldCoinsToReserves() {
+        coinsInReserve.addAll(coinsInBox)
+        coinsInBox = []
     }
 
     def private returnChange(changeDue) {
