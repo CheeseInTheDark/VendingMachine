@@ -61,6 +61,7 @@ class VendingMachine
         } else if (coin == "NICKEL") {
             nickelsAdded++
         }
+        coinBox.addToReserves(coin)
     }
 
     def private canMakeChangeForAllProducts() {
