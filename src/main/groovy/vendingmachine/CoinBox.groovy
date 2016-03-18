@@ -51,6 +51,7 @@ class CoinBox
             }
 
             while (valueToReturn >= 0.10 && (coinsInBox.contains("DIME") || dimeAddedToReserves)) {
+                dimeAddedToReserves = false
                 coinReturn.add("DIME")
                 valueToReturn -= 0.10
             }
