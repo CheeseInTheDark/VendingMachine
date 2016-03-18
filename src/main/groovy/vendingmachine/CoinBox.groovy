@@ -32,14 +32,21 @@ class CoinBox
 
     def claimCoins(value) {
         if (value != null) {
-            if (coinsInBox.contains("NICKEL") && !coinsInBox.contains("DIME")) {
-                2.times { coinReturn.add("NICKEL") }
-            } else if (coinsInBox.contains("NICKEL")) {
+            def valueToReturn = valueOfCoins() - value
+
+            while (valueToReturn >= 0.25 && coinsInBox.contains("QUARTER")) {
+                coinReturn.add("QUARTER")
+                valueToReturn -= 0.25
+            }
+
+            while (valueToReturn >= 0.10 && coinsInBox.contains("DIME")) {
                 coinReturn.add("DIME")
-            } else if (coinsInBox.contains("DIME")) {
-                (coinsInBox.size() - value / 0.10).times { coinReturn.add("DIME") }
-            } else {
-                (coinsInBox.size() - value / 0.25).times { coinReturn.add("QUARTER") }
+                valueToReturn -= 0.10
+            }
+
+            while (valueToReturn >= 0.05) {
+                coinReturn.add("NICKEL")
+                valueToReturn -= 0.05
             }
         }
         coinsInBox = []
