@@ -32,7 +32,9 @@ class CoinBox
 
     def claimCoins(value) {
         if (value != null) {
-            if (coinsInBox.contains("DIME")) {
+            if (value == 0.10) {
+                coinReturn.add("DIME")
+            } else if (coinsInBox.contains("DIME")) {
                 (coinsInBox.size() - value / 0.10).times { coinReturn.add("DIME") }
             } else {
                 (coinsInBox.size() - value / 0.25).times { coinReturn.add("QUARTER") }

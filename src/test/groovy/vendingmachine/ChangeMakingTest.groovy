@@ -56,4 +56,14 @@ class ChangeMakingTest
 
         assert coinReturn.collectItemsInTray() == ["DIME", "DIME", "DIME", "DIME"]
     }
+
+    @Test
+    def void claimingTenCentsWithTwoNickelsAndOneDimeInsertedReturnsOneDime() {
+        underTest.add("NICKEL")
+        underTest.add("NICKEL")
+        underTest.add("DIME")
+        underTest.claimCoins(0.10)
+
+        assert coinReturn.collectItemsInTray() == ["DIME"]
+    }
 }
