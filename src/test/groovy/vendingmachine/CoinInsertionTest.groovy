@@ -31,8 +31,7 @@ class CoinInsertionTest
 
     @Test
     def void displaysTenCentsWhenTwoNickelsAreInserted() {
-        underTest.insert("NICKEL")
-        underTest.insert("NICKEL")
+        2.times { underTest.insert("NICKEL") }
 
         assert underTest.display() == "0.10"
     }
@@ -101,9 +100,5 @@ class CoinInsertionTest
         underTest.returnCoins()
 
         assert underTest.display() == "INSERT COIN"
-    }
-
-    def private insertCoins(coins) {
-        coins.each { underTest.insert(it) }
     }
 }

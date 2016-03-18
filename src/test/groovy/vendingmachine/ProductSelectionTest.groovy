@@ -3,6 +3,8 @@ package vendingmachine
 import org.junit.Before
 import org.junit.Test
 
+import static vendingmachine.manipulator.CoinInserter.insert
+
 class ProductSelectionTest
 {
     def underTest = new VendingMachine()
@@ -61,10 +63,7 @@ class ProductSelectionTest
 
     @Test
     def void selectingCandyWithSufficentMoneyInTheMachineDispensesCandy() {
-        underTest.insert("QUARTER")
-        underTest.insert("QUARTER")
-        underTest.insert("DIME")
-        underTest.insert("NICKEL")
+        insert(["QUARTER", "QUARTER", "DIME", "NICKEL"]).into(underTest)
         underTest.selectCandy()
 
         assert underTest.retrieveDispensedItems() == ["EXCELLENT SUGARBOMBS"]
@@ -79,9 +78,7 @@ class ProductSelectionTest
 
     @Test
     def void selectingCandyWithMoreThanEnoughMoneyInTheMachineDispensesCandy() {
-        underTest.insert("QUARTER")
-        underTest.insert("QUARTER")
-        underTest.insert("QUARTER")
+        3.times { underTest.insert("QUARTER") }
         underTest.selectCandy()
 
         assert underTest.retrieveDispensedItems() == ["EXCELLENT SUGARBOMBS"]
@@ -97,8 +94,7 @@ class ProductSelectionTest
 
     @Test
     def void selectingChipsWithEnoughMoneyInTheMachineDispensesChips() {
-        underTest.insert("QUARTER")
-        underTest.insert("QUARTER")
+        2.times { underTest.insert("QUARTER") }
         underTest.selectChips()
 
         assert underTest.retrieveDispensedItems() == ["SUPER GOOD STARCH SLICES"]
@@ -121,8 +117,7 @@ class ProductSelectionTest
 
     @Test
     def void thankYouIsDisplayedAfterDispensingChips() {
-        underTest.insert("QUARTER")
-        underTest.insert("QUARTER")
+        2.times { underTest.insert("QUARTER") }
         underTest.selectChips()
 
         assert underTest.display() == "THANK YOU"
@@ -138,10 +133,7 @@ class ProductSelectionTest
 
     @Test
     def void thankYouIsDisplayedAfterDispensingCandy() {
-        underTest.insert("QUARTER")
-        underTest.insert("QUARTER")
-        underTest.insert("DIME")
-        underTest.insert("NICKEL")
+        insert(["QUARTER", "QUARTER", "DIME", "NICKEL"]).into(underTest)
         underTest.selectCandy()
 
         assert underTest.display() == "THANK YOU"
@@ -149,8 +141,7 @@ class ProductSelectionTest
 
     @Test
     def void dispensingAProductResetsTheMoneyInTheMachineToZero() {
-        underTest.insert("QUARTER")
-        underTest.insert("QUARTER")
+        2.times { underTest.insert("QUARTER") }
         underTest.selectChips()
         underTest.display()
 
@@ -168,8 +159,7 @@ class ProductSelectionTest
 
     @Test
     def void dispensedProductsCanOnlyBeRetrievedOnce() {
-        underTest.insert("QUARTER")
-        underTest.insert("QUARTER")
+        2.times { underTest.insert("QUARTER") }
         underTest.selectChips()
         underTest.retrieveDispensedItems()
 
