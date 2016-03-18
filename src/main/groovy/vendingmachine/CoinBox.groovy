@@ -10,6 +10,12 @@ class CoinBox
     def private coinsInBox = []
     def coinReturn
 
+
+    def private coinAddedToReserves = false
+    def addToReserves(coin) {
+        coinAddedToReserves = true
+    }
+
     def add(coin) {
         if (isAcceptable(coin)) {
             addToCoinsHeld(coin)
@@ -44,7 +50,7 @@ class CoinBox
                 valueToReturn -= 0.10
             }
 
-            while (valueToReturn >= 0.05 && coinsInBox.contains("NICKEL")) {
+            while (valueToReturn >= 0.05 && (coinsInBox.contains("NICKEL") || coinAddedToReserves)) {
                 coinReturn.add("NICKEL")
                 valueToReturn -= 0.05
             }
