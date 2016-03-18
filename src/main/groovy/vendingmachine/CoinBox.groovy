@@ -41,16 +41,25 @@ class CoinBox
         coinsInBox = []
 
         if (valueToClaim != null) {
-            def valueToReturn = valueOfCoinsHeldBeforeClaiming - valueToClaim
+            def changeDue = valueOfCoinsHeldBeforeClaiming - valueToClaim
+            returnChange(changeDue)
+        }
+    }
 
-            ["QUARTER", "DIME", "NICKEL"].each {
-                while (valueToReturn >= coinValues[it] && coinsInReserve.contains(it)) {
-                    coinsInReserve.remove(it)
-                    coinReturn.add(it)
-                    valueToReturn -= coinValues[it]
-                }
+    def private returnChange(changeDue) {
+        ["QUARTER", "DIME", "NICKEL"].each { denomination ->
+            while (changeDue >= coinValues[denomination] && coinsInReserve.contains(denomination)) {
+                move(denomination).fromCoinsInReserveToCoinReturn()
+                changeDue -= coinValues[denomination]
             }
         }
+    }
+
+    def private move(coin) {
+        [fromCoinsInReserveToCoinReturn: {
+            coinsInReserve.remove(coin)
+            coinReturn.add(coin)
+        }]
     }
 
     def returnCoins() {
