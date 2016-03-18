@@ -30,8 +30,9 @@ class CoinBox
         coinsInBox.sum { coinValues[it] }
     }
 
-    def claimCoins() {
+    def claimCoins(value) {
         coinsInBox = []
+        coinReturn.add("QUARTER")
     }
 
     def returnCoins() {
