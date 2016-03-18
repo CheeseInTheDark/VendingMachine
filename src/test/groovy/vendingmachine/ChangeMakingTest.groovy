@@ -215,4 +215,20 @@ class ChangeMakingTest
 
         assert coinReturn.collectItemsInTray() == ["QUARTER", "DIME", "DIME", "NICKEL"]
     }
+
+    @Test
+    def void countOfQuartersInReserveIsKept() {
+        underTest.addToReserves("QUARTER")
+        underTest.addToReserves("QUARTER")
+        2.times {
+            add(["DIME", "DIME", "NICKEL"])
+            underTest.claimCoins(0.00)
+        }
+
+        assert coinReturn.collectItemsInTray() == ["QUARTER", "QUARTER"]
+    }
+
+    def private add(coins) {
+        coins.each { underTest.add(it) }
+    }
 }

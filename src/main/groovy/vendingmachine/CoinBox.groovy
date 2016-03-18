@@ -10,7 +10,7 @@ class CoinBox
     def private coinsInBox = []
     def coinReturn
 
-    def private quarterInReserve = false
+    def private quartersInReserve = 0
     def private dimesInReserve = 0
     def private nickelsInReserve = 0
     def addToReserves(coin) {
@@ -19,7 +19,7 @@ class CoinBox
         } else if (coin == "NICKEL") {
             nickelsInReserve++
         } else {
-            quarterInReserve = true
+            quartersInReserve++
         }
     }
 
@@ -47,8 +47,8 @@ class CoinBox
         if (value != null) {
             def valueToReturn = valueOfCoins() - value
 
-            while (valueToReturn >= 0.25 && (coinsInBox.contains("QUARTER") || quarterInReserve)) {
-                quarterInReserve = false
+            while (valueToReturn >= 0.25 && (coinsInBox.contains("QUARTER") || quartersInReserve > 0)) {
+                quartersInReserve--
                 coinReturn.add("QUARTER")
                 coinsInBox.remove("QUARTER")
                 valueToReturn -= 0.25
