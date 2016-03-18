@@ -183,4 +183,14 @@ class ChangeMakingTest
 
         assert coinReturn.collectItemsInTray() == ["NICKEL", "NICKEL"]
     }
+
+    @Test
+    def void makingChangeRemovesCoinsFromBoxAsTheyAreReturned() {
+        underTest.add("QUARTER")
+        4.times { underTest.add("DIME") }
+        2.times { underTest.add("NICKEL") }
+        underTest.claimCoins(0.00)
+
+        assert coinReturn.collectItemsInTray() == ["QUARTER", "DIME", "DIME", "DIME", "DIME", "NICKEL", "NICKEL"]
+    }
 }

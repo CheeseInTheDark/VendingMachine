@@ -47,6 +47,7 @@ class CoinBox
 
             while (valueToReturn >= 0.25 && coinsInBox.contains("QUARTER")) {
                 coinReturn.add("QUARTER")
+                coinsInBox.remove("QUARTER")
                 valueToReturn -= 0.25
             }
 
@@ -54,6 +55,7 @@ class CoinBox
                 if (!coinsInBox.contains("DIME")) {
                     dimesInReserve--
                 }
+                coinsInBox.remove("DIME")
                 coinReturn.add("DIME")
                 valueToReturn -= 0.10
             }
