@@ -79,6 +79,11 @@ class CoinBox
             quartersInReserve++
         }
 
+        while (coinsInBox.contains("DIME")) {
+            coinsInBox.remove("DIME")
+            dimesInReserve++
+        }
+
         coinsInBox = []
     }
 

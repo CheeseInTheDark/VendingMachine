@@ -249,6 +249,16 @@ class ChangeMakingTest
         assert coinReturn.collectItemsInTray() == ["QUARTER", "QUARTER"]
     }
 
+    @Test
+    def void dimesLeftAfterMakingChangeAreAddedToReserves() {
+        add(["DIME", "DIME"])
+        underTest.claimCoins(0.20)
+        4.times { underTest.add("NICKEL") }
+        underTest.claimCoins(0.00)
+
+        assert coinReturn.collectItemsInTray() == ["DIME", "DIME"]
+    }
+
     def private add(coins) {
         coins.each { underTest.add(it) }
     }
