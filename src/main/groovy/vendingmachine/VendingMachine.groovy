@@ -16,7 +16,8 @@ class VendingMachine
             itemBin: itemBin,
             inventory: inventory)
 
-    def private coinsAdded = 0
+    def private dimesAdded = 0
+    def private nickelsAdded = 0
 
     def display() {
         statusReadout.nextMessage()
@@ -47,11 +48,13 @@ class VendingMachine
     }
 
     def addToCoinReserves(coin) {
-        if (coin != "QUARTER") {
-            coinsAdded++
+        if (coin == "DIME") {
+            dimesAdded++
+        } else if (coin == "NICKEL") {
+            nickelsAdded++
         }
 
-        if (coinsAdded == 2) {
+        if (nickelsAdded == 2 || (nickelsAdded == 1 && dimesAdded == 1)) {
             statusReadout.useInsertCoin()
         }
     }

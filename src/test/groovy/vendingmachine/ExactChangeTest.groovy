@@ -42,4 +42,11 @@ class ExactChangeTest
 
         assert underTest.display() == "INSERT COIN"
     }
+
+    @Test
+    def void exactChangeOnlyIsDisplayedWhenTwoDimesAreInCoinReserves() {
+        put(["DIME", "DIME"]).inCoinReservesOf(underTest)
+
+        assert underTest.display() == "EXACT CHANGE ONLY"
+    }
 }
