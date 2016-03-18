@@ -73,6 +73,12 @@ class CoinBox
                 valueToReturn -= 0.05
             }
         }
+
+        while (coinsInBox.contains("QUARTER")) {
+            coinsInBox.remove("QUARTER")
+            quartersInReserve++
+        }
+
         coinsInBox = []
     }
 
