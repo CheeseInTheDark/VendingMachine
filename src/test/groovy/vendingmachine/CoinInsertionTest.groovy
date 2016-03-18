@@ -3,6 +3,9 @@ package vendingmachine
 import org.junit.Before
 import org.junit.Test
 import vendingmachine.VendingMachine
+import vendingmachine.manipulator.CoinInserter
+
+import static vendingmachine.manipulator.CoinInserter.insert
 
 class CoinInsertionTest
 {
@@ -78,8 +81,7 @@ class CoinInsertionTest
 
     @Test
     def void returningCoinsWhenTwoQuartersAreInsertedReturnsTwoQuarters() {
-        underTest.insert("QUARTER")
-        underTest.insert("QUARTER")
+        2.times { underTest.insert("QUARTER") }
         underTest.returnCoins()
 
         assert underTest.retrieveReturnedCoins() == ["QUARTER", "QUARTER"]
@@ -87,7 +89,7 @@ class CoinInsertionTest
 
     @Test
     def void returningCoinsWhenOneQuarterTwoDimesAndOneNickelAreInsertedReturnsThoseCoins() {
-        insertCoins(["QUARTER", "QUARTER", "DIME", "DIME", "NICKEL"])
+        insert(["QUARTER", "QUARTER", "DIME", "DIME", "NICKEL"]).into(underTest)
         underTest.returnCoins()
 
         assert underTest.retrieveReturnedCoins() == ["QUARTER", "QUARTER", "DIME", "DIME", "NICKEL"]
