@@ -68,21 +68,7 @@ class CoinBox
             }
         }
 
-        while (coinsInBox.contains("QUARTER")) {
-            coinsInBox.remove("QUARTER")
-            coinsInReserve.add("QUARTER")
-        }
-
-        while (coinsInBox.contains("DIME")) {
-            coinsInBox.remove("DIME")
-            coinsInReserve.add("DIME")
-        }
-
-        while (coinsInBox.contains("NICKEL")) {
-            coinsInBox.remove("NICKEL")
-            coinsInReserve.add("NICKEL")
-        }
-
+        coinsInReserve.addAll(coinsInBox)
         coinsInBox = []
     }
 
