@@ -6,8 +6,14 @@ import vendingmachine.manipulator.InsertCoins
 
 class ChangeMakingTest
 {
-    def coinReturn = new CollectionTray()
-    def underTest = new CoinBox(coinReturn: coinReturn)
+    def coinReturn
+    def underTest
+
+    @Before
+    def void setup() {
+        coinReturn = new CollectionTray()
+        underTest = new CoinBox(coinReturn: coinReturn)
+    }
 
     @Test
     def void claimingOneDollarWithFiveQuartersInsertedReturnsOneQuarter() {
@@ -92,5 +98,13 @@ class ChangeMakingTest
         underTest.claimCoins(0.25)
 
         assert coinReturn.collectItemsInTray() == ["DIME", "NICKEL"]
+    }
+
+    @Test
+    def void changeIsNotDispensedWhenUnavailable() {
+        underTest.add("QUARTER")
+        underTest.claimCoins(0.20)
+
+        assert coinReturn.collectItemsInTray() == []
     }
 }

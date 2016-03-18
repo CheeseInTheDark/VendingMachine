@@ -44,7 +44,7 @@ class CoinBox
                 valueToReturn -= 0.10
             }
 
-            while (valueToReturn >= 0.05) {
+            while (valueToReturn >= 0.05 && coinsInBox.contains("NICKEL")) {
                 coinReturn.add("NICKEL")
                 valueToReturn -= 0.05
             }
