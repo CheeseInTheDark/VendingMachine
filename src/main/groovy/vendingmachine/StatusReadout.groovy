@@ -4,19 +4,21 @@ class StatusReadout
 {
     def private buildMoneyInMachineMessage = {
         if (coinBox.valueOfHeldCoins() > 0.0) { coinBox.valueOfHeldCoins().toString() }
-        else { insertCoinPrompt }
+        else { insertCoinPrompt() }
     }
 
-    def private insertCoinPrompt = "EXACT CHANGE ONLY"
+    def private insertCoinPrompt() {
+        if (coinBox.canMakeChangeForAllProducts()) {
+            "INSERT COIN"
+        } else {
+            "EXACT CHANGE ONLY"
+        }
+    }
     def private buildMessage = buildMoneyInMachineMessage
     def private coinBox
 
     StatusReadout(coinBox) {
         this.coinBox = coinBox
-    }
-
-    def useInsertCoin() {
-        insertCoinPrompt = "INSERT COIN"
     }
 
     def displayWaitingForMoney() {

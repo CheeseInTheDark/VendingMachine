@@ -9,7 +9,7 @@ class CoinBox
 
     def private coinsInBox = []
     def private coinsInReserve = []
-    def coinReturn
+    def private coinReturn
 
     def addToReserves(coin) {
         coinsInReserve << coin
@@ -44,6 +44,12 @@ class CoinBox
             def changeDue = valueOfCoinsHeldBeforeClaiming - valueToClaim
             returnChange(changeDue)
         }
+    }
+
+    def canMakeChangeForAllProducts() {
+        coinsInReserve.count("NICKEL") >= 2 ||
+        coinsInReserve.count("NICKEL") >= 1 &&
+        coinsInReserve.count("DIME") >= 1
     }
 
     def private returnChange(changeDue) {

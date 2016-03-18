@@ -16,9 +16,6 @@ class VendingMachine
             itemBin: itemBin,
             inventory: inventory)
 
-    def private dimesAdded = 0
-    def private nickelsAdded = 0
-
     def display() {
         statusReadout.nextMessage()
     }
@@ -48,24 +45,7 @@ class VendingMachine
     }
 
     def addToCoinReserves(coin) {
-        addToCountOfReservedCoins(coin)
-
-        if (canMakeChangeForAllProducts()) {
-            statusReadout.useInsertCoin()
-        }
-    }
-
-    def private addToCountOfReservedCoins(coin) {
-        if (coin == "DIME") {
-            dimesAdded++
-        } else if (coin == "NICKEL") {
-            nickelsAdded++
-        }
         coinBox.addToReserves(coin)
-    }
-
-    def private canMakeChangeForAllProducts() {
-        nickelsAdded == 2 || (nickelsAdded == 1 && dimesAdded == 1)
     }
 
     def retrieveReturnedCoins() {
