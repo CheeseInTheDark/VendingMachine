@@ -24,4 +24,12 @@ class ChangeMakingTest
 
         assert coinReturn.collectItemsInTray() == ["QUARTER", "QUARTER"]
     }
+
+    @Test
+    def void claimingFiftyCentsWithSixQuartersInsertedReturnsFourQuarters() {
+        6.times { underTest.add("QUARTER") }
+        underTest.claimCoins(0.50)
+
+        assert coinReturn.collectItemsInTray() == ["QUARTER", "QUARTER", "QUARTER", "QUARTER"]
+    }
 }

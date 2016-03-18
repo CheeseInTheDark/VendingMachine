@@ -31,7 +31,9 @@ class CoinBox
     }
 
     def claimCoins(value) {
-        (coinsInBox.size() - 4).times { coinReturn.add("QUARTER") }
+        if (value != null) {
+            (coinsInBox.size() - value / 0.25).times { coinReturn.add("QUARTER") }
+        }
         coinsInBox = []
     }
 
