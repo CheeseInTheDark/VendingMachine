@@ -27,11 +27,4 @@ class ExactChangeTest
 
         assert underTest.display() == "EXACT CHANGE ONLY"
     }
-
-    @Test
-    def void exactChangeOnlyIsDisplayedWhenTwoNickelsAndOneQuarterAreInCoinReserves() {
-         put(["NICKEL", "NICKEL", "QUARTER"]).inCoinReservesOf(underTest)
-
-        assert underTest.display() == "EXACT CHANGE ONLY"
-    }
 }
