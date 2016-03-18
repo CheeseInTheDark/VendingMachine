@@ -52,6 +52,7 @@ class CoinBox
 
             while (valueToReturn >= 0.05 && (coinsInBox.contains("NICKEL") || coinAddedToReserves)) {
                 coinReturn.add("NICKEL")
+                coinAddedToReserves = false
                 valueToReturn -= 0.05
             }
         }
