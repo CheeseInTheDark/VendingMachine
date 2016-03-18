@@ -11,9 +11,14 @@ class CoinBox
     def coinReturn
 
 
+    def private dimeAddedToReserves = false
     def private coinAddedToReserves = false
     def addToReserves(coin) {
-        coinAddedToReserves = true
+        if (coin == "DIME") {
+            dimeAddedToReserves = true
+        } else {
+            coinAddedToReserves = true
+        }
     }
 
     def add(coin) {
@@ -45,7 +50,7 @@ class CoinBox
                 valueToReturn -= 0.25
             }
 
-            while (valueToReturn >= 0.10 && coinsInBox.contains("DIME")) {
+            while (valueToReturn >= 0.10 && (coinsInBox.contains("DIME") || dimeAddedToReserves)) {
                 coinReturn.add("DIME")
                 valueToReturn -= 0.10
             }

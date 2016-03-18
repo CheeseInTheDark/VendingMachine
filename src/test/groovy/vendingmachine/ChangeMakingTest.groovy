@@ -125,4 +125,13 @@ class ChangeMakingTest
 
         assert coinReturn.collectItemsInTray() == ["NICKEL"]
     }
+
+    @Test
+    def void dimesFromReservesAreUsedToMakeChange() {
+        underTest.addToReserves("DIME")
+        underTest.add("QUARTER")
+        underTest.claimCoins(0.15)
+
+        assert coinReturn.collectItemsInTray() == ["DIME"]
+    }
 }
