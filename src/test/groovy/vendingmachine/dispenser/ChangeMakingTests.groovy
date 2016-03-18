@@ -1,10 +1,11 @@
-package vendingmachine
+package vendingmachine.dispenser
 
 import org.junit.Before
 import org.junit.Test
-import vendingmachine.manipulator.InsertCoins
+import vendingmachine.CoinBox
+import vendingmachine.CollectionTray
 
-class ChangeMakingTest
+class ChangeMakingTests
 {
     def coinReturn
     def underTest
@@ -218,8 +219,7 @@ class ChangeMakingTest
 
     @Test
     def void countOfQuartersInReserveIsKept() {
-        underTest.addToReserves("QUARTER")
-        underTest.addToReserves("QUARTER")
+        2.times { underTest.addToReserves("QUARTER") }
         2.times {
             add(["DIME", "DIME", "NICKEL"])
             underTest.claimCoins(0.00)

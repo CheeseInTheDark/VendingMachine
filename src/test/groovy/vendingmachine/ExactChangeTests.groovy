@@ -6,7 +6,7 @@ import vendingmachine.manipulator.AddCoinsToReserves
 import static vendingmachine.manipulator.AddCoinsToReserves.put
 import static vendingmachine.manipulator.AddCoinsToReserves.put
 
-class ExactChangeTest
+class ExactChangeTests
 {
     def underTest = new VendingMachine()
 

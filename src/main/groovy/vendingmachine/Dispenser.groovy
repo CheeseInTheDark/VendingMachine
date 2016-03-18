@@ -26,7 +26,7 @@ class Dispenser
     }
 
     def private insufficientFundsToPurchase(product) {
-        product.price > coinBox.valueOfCoins()
+        product.price > coinBox.valueOfHeldCoins()
     }
 
     def private displayPriceOf(product) {
@@ -37,6 +37,6 @@ class Dispenser
         inventory.removeOneOf(product.name)
         itemBin.add(product.name)
         statusReadout.displayGratification()
-        coinBox.claimCoins()
+        coinBox.claimCoins(product.price)
     }
 }

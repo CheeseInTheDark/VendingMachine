@@ -6,7 +6,7 @@ import vendingmachine.manipulator.InsertCoins
 
 import static InsertCoins.insert
 
-class CoinInsertionTest
+class CoinInsertionTests
 {
     def underTest
 

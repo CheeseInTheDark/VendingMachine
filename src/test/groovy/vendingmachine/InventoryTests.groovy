@@ -2,7 +2,7 @@ package vendingmachine
 
 import org.junit.Test
 
-class InventoryTest
+class InventoryTests
 {
     def underTest = new VendingMachine()
 

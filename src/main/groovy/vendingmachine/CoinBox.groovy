@@ -31,12 +31,12 @@ class CoinBox
         coinsInBox << coin
     }
 
-    def valueOfCoins() {
+    def valueOfHeldCoins() {
         coinsInBox.sum { coinValues[it] }
     }
 
     def claimCoins(valueToClaim) {
-        def valueOfCoinsHeldBeforeClaiming = valueOfCoins()
+        def valueOfCoinsHeldBeforeClaiming = valueOfHeldCoins()
         coinsInReserve.addAll(coinsInBox)
         coinsInBox = []
 

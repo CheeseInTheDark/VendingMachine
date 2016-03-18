@@ -3,7 +3,7 @@ package vendingmachine
 class StatusReadout
 {
     def private buildMoneyInMachineMessage = {
-        if (coinBox.valueOfCoins() > 0.0) { coinBox.valueOfCoins().toString() }
+        if (coinBox.valueOfHeldCoins() > 0.0) { coinBox.valueOfHeldCoins().toString() }
         else { insertCoinPrompt }
     }
 

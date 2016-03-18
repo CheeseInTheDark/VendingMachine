@@ -5,7 +5,7 @@ import org.junit.Test
 
 import static vendingmachine.manipulator.InsertCoins.insert
 
-class ProductSelectionTest
+class ProductSelectionTests
 {
     def underTest = new VendingMachine()
 
