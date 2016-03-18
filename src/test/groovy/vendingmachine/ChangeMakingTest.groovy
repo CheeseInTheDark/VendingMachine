@@ -172,4 +172,15 @@ class ChangeMakingTest
 
         assert coinReturn.collectItemsInTray() == ["DIME", "DIME"]
     }
+
+    @Test
+    def void makingChangeDoesNotRemoveNickelsFromReservesIfNickelsAreAvailableFromHeldCoins() {
+        underTest.addToReserves("NICKEL")
+        underTest.add("NICKEL")
+        underTest.claimCoins(0.00)
+        underTest.add("QUARTER")
+        underTest.claimCoins(0.05)
+
+        assert coinReturn.collectItemsInTray() == ["NICKEL", "NICKEL"]
+    }
 }
