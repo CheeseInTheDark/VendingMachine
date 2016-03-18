@@ -228,6 +228,17 @@ class ChangeMakingTest
         assert coinReturn.collectItemsInTray() == ["QUARTER", "QUARTER"]
     }
 
+    @Test
+    def void quartersHeldAreUsedToMakeChangeBeforeQuartersInReserves() {
+        underTest.addToReserves("QUARTER")
+        underTest.add("QUARTER")
+        underTest.claimCoins(0.00)
+        add(["DIME", "DIME", "NICKEL"])
+        underTest.claimCoins(0.00)
+
+        assert coinReturn.collectItemsInTray() == ["QUARTER", "QUARTER"]
+    }
+
     def private add(coins) {
         coins.each { underTest.add(it) }
     }
