@@ -35,4 +35,11 @@ class ExactChangeTest
 
         assert underTest.display() == "INSERT COIN"
     }
+
+    @Test
+    def void insertCoinIsDisplayedWhenOneDimeOneQuarterAndOneNickelAreInCoinReserves() {
+        put(["DIME", "QUARTER", "NICKEL"]).inCoinReservesOf(underTest)
+
+        assert underTest.display() == "INSERT COIN"
+    }
 }

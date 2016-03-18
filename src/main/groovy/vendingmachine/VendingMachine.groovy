@@ -47,8 +47,11 @@ class VendingMachine
     }
 
     def addToCoinReserves(coin) {
-        coinsAdded++
-        if (coinsAdded == 2 && coin != "QUARTER") {
+        if (coin != "QUARTER") {
+            coinsAdded++
+        }
+
+        if (coinsAdded == 2) {
             statusReadout.useInsertCoin()
         }
     }
