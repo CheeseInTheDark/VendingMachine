@@ -8,19 +8,11 @@ class CoinBox
              "QUARTER": 0.25]
 
     def private coinsInBox = []
+    def private coinsInReserve = []
     def coinReturn
 
-    def private quartersInReserve = 0
-    def private dimesInReserve = 0
-    def private nickelsInReserve = 0
     def addToReserves(coin) {
-        if (coin == "DIME") {
-            dimesInReserve++
-        } else if (coin == "NICKEL") {
-            nickelsInReserve++
-        } else {
-            quartersInReserve++
-        }
+        coinsInReserve << coin
     }
 
     def add(coin) {
@@ -47,29 +39,29 @@ class CoinBox
         if (value != null) {
             def valueToReturn = valueOfCoins() - value
 
-            while (valueToReturn >= 0.25 && (coinsInBox.contains("QUARTER") || quartersInReserve > 0)) {
+            while (valueToReturn >= 0.25 && (coinsInBox.contains("QUARTER") || coinsInReserve.contains("QUARTER"))) {
                 if (!coinsInBox.contains("QUARTER")) {
-                    quartersInReserve--
+                    coinsInReserve.remove("QUARTER")
                 }
                 coinsInBox.remove("QUARTER")
                 coinReturn.add("QUARTER")
                 valueToReturn -= 0.25
             }
 
-            while (valueToReturn >= 0.10 && (coinsInBox.contains("DIME") || dimesInReserve > 0)) {
+            while (valueToReturn >= 0.10 && (coinsInBox.contains("DIME") || coinsInReserve.contains("DIME"))) {
                 coinReturn.add("DIME")
                 if (!coinsInBox.contains("DIME")) {
-                    dimesInReserve--
+                    coinsInReserve.remove("DIME")
                 }
                 coinsInBox.remove("DIME")
 
                 valueToReturn -= 0.10
             }
 
-            while (valueToReturn >= 0.05 && (coinsInBox.contains("NICKEL") || nickelsInReserve > 0)) {
+            while (valueToReturn >= 0.05 && (coinsInBox.contains("NICKEL") || coinsInReserve.contains("NICKEL"))) {
                 coinReturn.add("NICKEL")
                 if (!coinsInBox.contains("NICKEL")) {
-                    nickelsInReserve--
+                    coinsInReserve.remove("NICKEL")
                 }
                 coinsInBox.remove("NICKEL")
                 valueToReturn -= 0.05
@@ -78,17 +70,17 @@ class CoinBox
 
         while (coinsInBox.contains("QUARTER")) {
             coinsInBox.remove("QUARTER")
-            quartersInReserve++
+            coinsInReserve.add("QUARTER")
         }
 
         while (coinsInBox.contains("DIME")) {
             coinsInBox.remove("DIME")
-            dimesInReserve++
+            coinsInReserve.add("DIME")
         }
 
         while (coinsInBox.contains("NICKEL")) {
             coinsInBox.remove("NICKEL")
-            nickelsInReserve++
+            coinsInReserve.add("NICKEL")
         }
 
         coinsInBox = []
