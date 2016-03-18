@@ -193,4 +193,14 @@ class ChangeMakingTest
 
         assert coinReturn.collectItemsInTray() == ["QUARTER", "DIME", "DIME", "DIME", "DIME", "NICKEL", "NICKEL"]
     }
+
+    @Test
+    def void quartersHeldInReserveAreUsedToMakeChangeBeforeDimes() {
+        underTest.addToReserves("QUARTER")
+        2.times { underTest.add("DIME") }
+        underTest.add("NICKEL")
+        underTest.claimCoins(0.00)
+
+        assert coinReturn.collectItemsInTray() == ["QUARTER"]
+    }
 }
