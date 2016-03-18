@@ -143,4 +143,13 @@ class ChangeMakingTest
 
         assert coinReturn.collectItemsInTray() == ["DIME"]
     }
+
+    @Test
+    def void moreThanOneDimeIsTakenFromReservesToMakeChange() {
+        2.times { underTest.addToReserves("DIME") }
+        underTest.add("QUARTER")
+        underTest.claimCoins(0.05)
+
+        assert coinReturn.collectItemsInTray() == ["DIME", "DIME"]
+    }
 }
