@@ -17,4 +17,11 @@ class ExactChangeTest
 
         assert underTest.display() == "EXACT CHANGE ONLY"
     }
+
+    @Test
+    def void exactChangeOnlyIsDisplayedWhenTwoQuartersAreInCoinReserves() {
+        2.times { underTest.addToCoinReserves("QUARTER") }
+
+        assert underTest.display() == "EXACT CHANGE ONLY"
+    }
 }

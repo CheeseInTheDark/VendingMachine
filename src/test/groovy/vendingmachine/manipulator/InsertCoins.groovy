@@ -1,6 +1,6 @@
 package vendingmachine.manipulator
 
-class CoinInserter
+class InsertCoins
 {
     def static insert(coins) {
         [into: {
@@ -8,5 +8,9 @@ class CoinInserter
                 machine.insert(it)
             }
         }]
+    }
+
+    def static insert(coins) {
+
     }
 }
