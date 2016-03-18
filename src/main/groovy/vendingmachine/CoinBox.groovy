@@ -39,32 +39,15 @@ class CoinBox
         if (value != null) {
             def valueToReturn = valueOfCoins() - value
 
-            while (valueToReturn >= 0.25 && (coinsInBox.contains("QUARTER") || coinsInReserve.contains("QUARTER"))) {
-                if (!coinsInBox.contains("QUARTER")) {
-                    coinsInReserve.remove("QUARTER")
+            ["QUARTER", "DIME", "NICKEL"].each {
+                while (valueToReturn >= coinValues[it] && (coinsInBox.contains(it) || coinsInReserve.contains(it))) {
+                    if (!coinsInBox.contains(it)) {
+                        coinsInReserve.remove(it)
+                    }
+                    coinsInBox.remove(it)
+                    coinReturn.add(it)
+                    valueToReturn -= coinValues[it]
                 }
-                coinsInBox.remove("QUARTER")
-                coinReturn.add("QUARTER")
-                valueToReturn -= 0.25
-            }
-
-            while (valueToReturn >= 0.10 && (coinsInBox.contains("DIME") || coinsInReserve.contains("DIME"))) {
-                coinReturn.add("DIME")
-                if (!coinsInBox.contains("DIME")) {
-                    coinsInReserve.remove("DIME")
-                }
-                coinsInBox.remove("DIME")
-
-                valueToReturn -= 0.10
-            }
-
-            while (valueToReturn >= 0.05 && (coinsInBox.contains("NICKEL") || coinsInReserve.contains("NICKEL"))) {
-                coinReturn.add("NICKEL")
-                if (!coinsInBox.contains("NICKEL")) {
-                    coinsInReserve.remove("NICKEL")
-                }
-                coinsInBox.remove("NICKEL")
-                valueToReturn -= 0.05
             }
         }
 
