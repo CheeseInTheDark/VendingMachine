@@ -12,12 +12,12 @@ class CoinBox
 
 
     def private dimesInReserve = 0
-    def private coinAddedToReserves = false
+    def private nickelsInReserve = 0
     def addToReserves(coin) {
         if (coin == "DIME") {
             dimesInReserve++
         } else {
-            coinAddedToReserves = true
+            nickelsInReserve++
         }
     }
 
@@ -56,9 +56,9 @@ class CoinBox
                 valueToReturn -= 0.10
             }
 
-            while (valueToReturn >= 0.05 && (coinsInBox.contains("NICKEL") || coinAddedToReserves)) {
+            while (valueToReturn >= 0.05 && (coinsInBox.contains("NICKEL") || nickelsInReserve > 0)) {
                 coinReturn.add("NICKEL")
-                coinAddedToReserves = false
+                nickelsInReserve--
                 valueToReturn -= 0.05
             }
         }
