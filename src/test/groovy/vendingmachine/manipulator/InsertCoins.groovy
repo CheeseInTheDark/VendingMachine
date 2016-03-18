@@ -9,8 +9,4 @@ class InsertCoins
             }
         }]
     }
-
-    def static insert(coins) {
-
-    }
 }

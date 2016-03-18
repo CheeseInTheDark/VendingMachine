@@ -3,7 +3,7 @@ package vendingmachine
 import org.junit.Before
 import org.junit.Test
 
-import static vendingmachine.manipulator.CoinInserter.insert
+import static vendingmachine.manipulator.InsertCoins.insert
 
 class ProductSelectionTest
 {

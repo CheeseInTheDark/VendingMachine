@@ -2,10 +2,9 @@ package vendingmachine
 
 import org.junit.Before
 import org.junit.Test
-import vendingmachine.VendingMachine
-import vendingmachine.manipulator.CoinInserter
+import vendingmachine.manipulator.InsertCoins
 
-import static vendingmachine.manipulator.CoinInserter.insert
+import static InsertCoins.insert
 
 class CoinInsertionTest
 {
