@@ -35,24 +35,22 @@ class CoinBox
         coinsInBox.sum { coinValues[it] }
     }
 
-    def claimCoins(value) {
-        if (value != null) {
-            def valueToReturn = valueOfCoins() - value
+    def claimCoins(valueToClaim) {
+        def valueOfCoinsHeldBeforeClaiming = valueOfCoins()
+        coinsInReserve.addAll(coinsInBox)
+        coinsInBox = []
+
+        if (valueToClaim != null) {
+            def valueToReturn = valueOfCoinsHeldBeforeClaiming - valueToClaim
 
             ["QUARTER", "DIME", "NICKEL"].each {
-                while (valueToReturn >= coinValues[it] && (coinsInBox.contains(it) || coinsInReserve.contains(it))) {
-                    if (!coinsInBox.contains(it)) {
-                        coinsInReserve.remove(it)
-                    }
-                    coinsInBox.remove(it)
+                while (valueToReturn >= coinValues[it] && coinsInReserve.contains(it)) {
+                    coinsInReserve.remove(it)
                     coinReturn.add(it)
                     valueToReturn -= coinValues[it]
                 }
             }
         }
-
-        coinsInReserve.addAll(coinsInBox)
-        coinsInBox = []
     }
 
     def returnCoins() {
