@@ -32,7 +32,7 @@ class CoinBox
 
     def claimCoins(value) {
         if (value != null) {
-            if (value == 0.10) {
+            if (coinsInBox.contains("NICKEL")) {
                 coinReturn.add("DIME")
             } else if (coinsInBox.contains("DIME")) {
                 (coinsInBox.size() - value / 0.10).times { coinReturn.add("DIME") }
