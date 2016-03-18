@@ -110,11 +110,10 @@ class ChangeMakingTest
 
     @Test
     def void changeIsMadeUsingCoinsHeldInReserve() {
-        2.times { underTest.addToReserves("NICKEL") }
+        underTest.addToReserves("NICKEL")
         underTest.add("QUARTER")
         underTest.claimCoins(0.20)
 
         assert coinReturn.collectItemsInTray() == ["NICKEL"]
-
     }
 }
